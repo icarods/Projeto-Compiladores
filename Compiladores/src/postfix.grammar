@@ -1,15 +1,21 @@
 Package simpleAdder; 
      
 Helpers   
-   	dig = [0 .. 9];
-   	letra = [['a' .. 'z']+['A' .. 'Z']];
-    nl = '\n'
+   	dig = [0..9];
+   	letra = [['a'..'z']+['A'..'Z']];
+    nl = '\n';
+    lf = 10; 
+    tab = 9; 
     
 Tokens
 	num = dig(dig|dig)*
 	id = letra(letra|letra)*;
-	if = 'if';
-	while = 'while';
+	se = 'if';
+	enq = 'while';
+	senao = 'else';
+	inteiro = 'int';
+	retorno = 'return';
+	vazio = 'void';
 	add = '+';
  	sub = '-';
  	mult = '*';
@@ -23,7 +29,14 @@ Tokens
  	atr = '='
  	par_es = '(*';
  	par_dir = ')*';
-	
-	
-Ignored Tokens
+ 	chaves_dir = ‘{’;
+    chaves_esq = ‘}’;
+    ponto_vrg = ';';
+    branco = (' ' | lf | tb)+;
+    comentario = '' 
  	
+Ignored Tokens
+ 	branco;
+ 	comentario;
+ 	
+ Productions
