@@ -6,12 +6,14 @@ Helpers
     nl = '\n';
     lf = 10; 
     tab = 9; 
+    cr = 13;
+    character = [0x0 .. 0xfffff];     
     
 Tokens
-	num = dig(dig|dig)*
-	id = letra(letra|letra)*;
+	num = dig (dig | dig)*;
+	id = letra (letra | letra)*;
 	se = 'if';
-	enq = 'while';
+	enquanto = 'while';
 	senao = 'else';
 	inteiro = 'int';
 	retorno = 'return';
@@ -21,22 +23,23 @@ Tokens
  	mult = '*';
  	div = '/';
  	menor = '<';
- 	maior = '>'
+ 	maior = '>';
  	menor_igl = '<=';
- 	maior_igl = '>='
- 	igl = '=='
- 	dif = '!='
- 	atr = '='
+ 	maior_igl = '>=';
+ 	igl = '==';
+ 	dif = '!=';
+ 	atr = '=';
  	par_es = '(*';
  	par_dir = ')*';
  	chaves_dir = ‘{’;
     chaves_esq = ‘}’;
     ponto_vrg = ';';
-    branco = (' ' | lf | tb)+;
-    comentario = '' 
+    branco = (' ' | lf | tab | cr)+;
+    comentario_ln = '//' character nl; 
+    comentario  = 
  	
 Ignored Tokens
  	branco;
  	comentario;
  	
- Productions
+Productions
