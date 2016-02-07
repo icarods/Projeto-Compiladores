@@ -1,15 +1,23 @@
-/* simpleAdder.sable - A very simple program that recognizes two integers being added. */ 
 Package simpleAdder; 
      
 Tokens   
     digit = ['0' .. '9'];
-    number = [0 .. 9];
-    plus = '+';
+   	number = [0 .. 9];
+   	letter = [['a' .. 'z']+['A' .. 'Z']];
+     
+    
+Tokens
+	id = letter(letter|digit)*;
+	if = 'if';
+	while = 'while';
+	plus = '+';
  	minus = '-';
  	mult = '*';
  	div = '/';
  	mod = '%';
-	l_par = '(';
- 	r_par = ')'; 
-    
- Ignored Tokens
+ 	l_par = '(';
+ 	r_par = ')';
+	
+	
+Ignored Tokens
+ 	
