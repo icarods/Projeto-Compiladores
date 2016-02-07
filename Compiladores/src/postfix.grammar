@@ -29,10 +29,10 @@ Tokens
  	atr = '='
  	par_es = '(*';
  	par_dir = ')*';
- 	chaves_dir = ‘{’;
-    chaves_esq = ‘}’;
+ 	chaves_dir = â€˜{â€™;
+    chaves_esq = â€˜}â€™;
     ponto_vrg = ';';
-    branco = (' ' | lf | tb)+;
+    branco = (' ' | lf | tab)+;
     comentario = '' 
  	
 Ignored Tokens
