@@ -42,15 +42,13 @@ Tokens
     	{normal} ponto_vrg = ';';
 	{normal} branco = (' ' | lf | tab | cr)+;
 	
-	{normal->comment, comment}
-          comment = '/*';
-        {comment} comment_end = '*/';
-	{comment} comment_body = [all -['*' + '/']]*;
-	{comment} star = '*';
-	{comment} slash = '/';
+	{normal->comment, comment} comentario_aninhado = '/*' ([character - '*']* '*'+ [character - ['*' + '/']])* [character - '*']*;
+	{comment} fim_comentario_aninhado = '*'+ '/';
 	
 Ignored Tokens
  	branco;
  	comentario_ln;
+ 	comentario_aninhado;
+ 	fim_comentario_aninhado;
  	
  Productions
