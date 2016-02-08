@@ -43,9 +43,4 @@ Tokens
 	{comment} fim_comentario_aninhado = '*'+ '/';
 	
 Ignored Tokens
- 	branco;
- 	comentario_ln;
- 	comentario_aninhado;
- 	fim_comentario_aninhado;
- 	
- Productions
+ 	branco, comentario_ln, comentario_aninhado, fim_comentario_aninhado;
