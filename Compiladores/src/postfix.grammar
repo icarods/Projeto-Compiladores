@@ -13,7 +13,7 @@ States
 	normal, comment;
     
 Tokens
-	{normal} num = dig(dig|dig)*
+	{normal} num = dig(dig|dig)*;
 	{normal} id = letra(letra|letra)*;
 	{normal} se = 'if';
 	{normal} enq = 'while';
@@ -26,20 +26,20 @@ Tokens
  	{normal} mult = '*';
  	{normal} div = '/';
  	{normal} menor = '<';
- 	{normal} maior = '>'
+ 	{normal} maior = '>';
  	{normal} menor_igl = '<=';
- 	{normal} maior_igl = '>='
- 	{normal} igl = '=='
- 	{normal} dif = '!='
- 	{normal} atr = '='
- 	{normal} par_es = '(*';
- 	{normal} par_dir = ')*';
+ 	{normal} maior_igl = '>=';
+ 	{normal} igl = '==';
+ 	{normal} dif = '!=';
+ 	{normal} atr = '=';
+ 	{normal} par_es = '(';
+ 	{normal} par_dir = ')';
  	{normal} chaves_dir = '{';
  	{normal} chaves_esq = '}';
     {normal} ponto_vrg = ';';
 	{normal} branco = (' ' | lf | tab | cr)+;
 	{normal} comentario_ln = '//' character nl;
-	{normal->comment, comment} comentario_aninhado = '/*' ([character - '*']* '*'+ [character - ['*' + '/']])* [character - '*']*;
+	{normal->comment, comment} comentario_aninhado = '/*' ([character - '*']* '*' + [character - ['*' + '/']])* [character - '*']*;
 	{comment} fim_comentario_aninhado = '*'+ '/';
 	
 Ignored Tokens
