@@ -9,13 +9,11 @@ Helpers
    tab = 9; 
    cr = 13;
     character = [0x0..0xfffff];
-    character_nast = [[0x0..0xfffff] - '*'];
-    character_nbarra = [[0x0..0xfffff] - '/'];
     comentario_ln = '//' character nl;
-	comentario_bl = '/*' character_nast character_nbarra '*/';
+	
 	
 States
-	normal, comentario;
+	normal, comment;
     
 Tokens
 	{normal} num = dig(dig|dig)*
@@ -53,6 +51,6 @@ Tokens
 	
 Ignored Tokens
  	branco;
- 	comentario;
+ 	comentario_ln;
  	
  Productions
