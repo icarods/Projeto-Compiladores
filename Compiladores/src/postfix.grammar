@@ -3,14 +3,11 @@ Package simpleAdder;
 Helpers   
    	dig = [0..9];
    	letra = [['a'..'z']+['A'..'Z']];
-   all = [0 .. 0xffff];
-   nl = '\n';
-   lf = 10; 
-   tab = 9; 
-   cr = 13;
-    character = [0x0..0xfffff];
-    comentario_ln = '//' character nl;
-	
+   	character = [0 .. 0xffff];
+   	nl = '\n';
+   	lf = 10; 
+   	tab = 9; 
+   	cr = 13;
 	
 States
 	normal, comment;
@@ -39,9 +36,9 @@ Tokens
  	{normal} par_dir = ')*';
  	{normal} chaves_dir = '{';
  	{normal} chaves_esq = '}';
-    	{normal} ponto_vrg = ';';
+    {normal} ponto_vrg = ';';
 	{normal} branco = (' ' | lf | tab | cr)+;
-	
+	{normal} comentario_ln = '//' character nl;
 	{normal->comment, comment} comentario_aninhado = '/*' ([character - '*']* '*'+ [character - ['*' + '/']])* [character - '*']*;
 	{comment} fim_comentario_aninhado = '*'+ '/';
 	
