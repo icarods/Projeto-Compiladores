@@ -8,6 +8,8 @@ Helpers
    	lf = 10; 
    	tab = 9; 
    	cr = 13;
+   	charc_sem_ast = [character - '*']*;
+   	charc_sem_ast_barra = [character - ['*' + '/']];
 	
 States
 	normal, comment;
@@ -39,7 +41,7 @@ Tokens
     {normal} ponto_vrg = ';';
 	{normal} branco = (' ' | lf | tab | cr)+;
 	{normal} comentario_ln = '//' character nl;
-	{normal->comment, comment} comentario_aninhado = '/*' ([character - '*']* '*' + [character - ['*' + '/']])* [character - '*']*;
+	{normal->comment, comment} comentario_aninhado = '/*' (charc_sem_ast '*' + charc_sem_ast_barra)* charc_sem_ast;
 	{comment} fim_comentario_aninhado = '*'+ '/';
 	
 Ignored Tokens
