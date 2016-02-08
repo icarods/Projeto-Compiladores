@@ -3,43 +3,53 @@ Package simpleAdder;
 Helpers   
    	dig = [0..9];
    	letra = [['a'..'z']+['A'..'Z']];
-    nl = '\n';
-    lf = 10; 
-    tab = 9; 
-    cr = 13;
+   all = [0 .. 0xffff];
+   nl = '\n';
+   lf = 10; 
+   tab = 9; 
+   cr = 13;
     character = [0x0..0xfffff];
     character_nast = [[0x0..0xfffff] - '*'];
     character_nbarra = [[0x0..0xfffff] - '/'];
     comentario_ln = '//' character nl;
 	comentario_bl = '/*' character_nast character_nbarra '*/';
+	
+States
+	normal, comentario;
     
 Tokens
-	num = dig(dig|dig)*
-	id = letra(letra|letra)*;
-	se = 'if';
-	enq = 'while';
-	senao = 'else';
-	inteiro = 'int';
-	retorno = 'return';
-	vazio = 'void';
-	add = '+';
- 	sub = '-';
- 	mult = '*';
- 	div = '/';
- 	menor = '<';
- 	maior = '>'
- 	menor_igl = '<=';
- 	maior_igl = '>='
- 	igl = '=='
- 	dif = '!='
- 	atr = '='
- 	par_es = '(*';
- 	par_dir = ')*';
- 	chaves_dir = '{';
-    chaves_esq = '}';
-    ponto_vrg = ';';
-	branco = (' ' | lf | tab | cr)+;
-	comentario = (comentario_ln | comentario_bl)+;
+	{normal} num = dig(dig|dig)*
+	{normal} id = letra(letra|letra)*;
+	{normal} se = 'if';
+	{normal} enq = 'while';
+	{normal} senao = 'else';
+	{normal} inteiro = 'int';
+	{normal} retorno = 'return';
+	{normal} vazio = 'void';
+	{normal} add = '+';
+ 	{normal} sub = '-';
+ 	{normal} mult = '*';
+ 	{normal} div = '/';
+ 	{normal} menor = '<';
+ 	{normal} maior = '>'
+ 	{normal} menor_igl = '<=';
+ 	{normal} maior_igl = '>='
+ 	{normal} igl = '=='
+ 	{normal} dif = '!='
+ 	{normal} atr = '='
+ 	{normal} par_es = '(*';
+ 	{normal} par_dir = ')*';
+ 	{normal} chaves_dir = '{';
+ 	{normal} chaves_esq = '}';
+    	{normal} ponto_vrg = ';';
+	{normal} branco = (' ' | lf | tab | cr)+;
+	
+	{normal->comment, comment}
+          comment = '/*';
+        {comment} comment_end = '*/';
+	{comment} comment_body = [all -['*' + '/']]*;
+	{comment} star = '*';
+	{comment} slash = '/';
 	
 Ignored Tokens
  	branco;
