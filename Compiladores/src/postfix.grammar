@@ -41,8 +41,11 @@ Tokens
     {normal} ponto_vrg = ';';
 	{normal} branco = (' ' | lf | tab | cr)+;
 	{normal} comentario_ln = '//' character nl;
-	{normal->comment, comment} comentario_aninhado = '/*' (charc_sem_ast '*' + charc_sem_ast_barra)* charc_sem_ast;
-	{comment} fim_comentario_aninhado = '*'+ '/';
+	
+	{normal->comment, comment}
+          inicio_comentario_aninhado = '/*';
+          {comment} texto_comentario = [character -['*' + '/']]*;
+          {comment} fim_comentario_aninhado = '*'+ '/';
 	
 Ignored Tokens
- 	branco, comentario_ln, comentario_aninhado, fim_comentario_aninhado;
+ 	branco, comentario_ln, inicio_comentario_aninhado, fim_comentario_aninhado, texto_comentario;
