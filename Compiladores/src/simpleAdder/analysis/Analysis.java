@@ -37,7 +37,8 @@ public interface Analysis extends Switch
     void caseTPontoVrg(TPontoVrg node);
     void caseTBranco(TBranco node);
     void caseTComentarioLn(TComentarioLn node);
-    void caseTComentarioAninhado(TComentarioAninhado node);
+    void caseTInicioComentarioAninhado(TInicioComentarioAninhado node);
+    void caseTTextoComentario(TTextoComentario node);
     void caseTFimComentarioAninhado(TFimComentarioAninhado node);
     void caseEOF(EOF node);
     void caseInvalidToken(InvalidToken node);

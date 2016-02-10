@@ -225,7 +225,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTComentarioAninhado(TComentarioAninhado node)
+    public void caseTInicioComentarioAninhado(TInicioComentarioAninhado node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTTextoComentario(TTextoComentario node)
     {
         defaultCase(node);
     }

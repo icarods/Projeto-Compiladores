@@ -5,16 +5,16 @@ package simpleAdder.node;
 import simpleAdder.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TMenor extends Token
+public final class TInicioComentarioAninhado extends Token
 {
-    public TMenor()
+    public TInicioComentarioAninhado()
     {
-        super.setText("<");
+        super.setText("/*");
     }
 
-    public TMenor(int line, int pos)
+    public TInicioComentarioAninhado(int line, int pos)
     {
-        super.setText("<");
+        super.setText("/*");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TMenor extends Token
     @Override
     public Object clone()
     {
-      return new TMenor(getLine(), getPos());
+      return new TInicioComentarioAninhado(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTMenor(this);
+        ((Analysis) sw).caseTInicioComentarioAninhado(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TMenor text.");
+        throw new RuntimeException("Cannot change TInicioComentarioAninhado text.");
     }
 }

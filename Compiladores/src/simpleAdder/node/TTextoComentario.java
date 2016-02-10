@@ -5,14 +5,14 @@ package simpleAdder.node;
 import simpleAdder.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TFimComentarioAninhado extends Token
+public final class TTextoComentario extends Token
 {
-    public TFimComentarioAninhado(String text)
+    public TTextoComentario(String text)
     {
         setText(text);
     }
 
-    public TFimComentarioAninhado(String text, int line, int pos)
+    public TTextoComentario(String text, int line, int pos)
     {
         setText(text);
         setLine(line);
@@ -22,12 +22,12 @@ public final class TFimComentarioAninhado extends Token
     @Override
     public Object clone()
     {
-      return new TFimComentarioAninhado(getText(), getLine(), getPos());
+      return new TTextoComentario(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTFimComentarioAninhado(this);
+        ((Analysis) sw).caseTTextoComentario(this);
     }
 }
