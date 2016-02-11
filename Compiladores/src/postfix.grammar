@@ -41,6 +41,8 @@ Tokens
     {normal} ponto_vrg = ';';
 	{normal} branco = (' ' | lf | tab | cr)+;
 	{normal} comentario_ln = '//' character nl;
+	{comment} star = '*';
+	{comment} slash = '/';
 	
 	{normal->comment, comment}
           inicio_comentario_aninhado = '/*';
