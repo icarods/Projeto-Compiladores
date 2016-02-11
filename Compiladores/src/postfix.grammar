@@ -1,7 +1,7 @@
 Package simpleAdder; 
      
 Helpers   
-   	dig = [0..9];
+   	dig = ['0'..'9'];
    	letra = [['a'..'z']+['A'..'Z']];
    	character = [0..0xffff];
    	nl = '\n';
@@ -38,16 +38,18 @@ Tokens
  	{normal} par_dir = ')';
  	{normal} chaves_dir = '{';
  	{normal} chaves_esq = '}';
-    {normal} ponto_vrg = ';';
+        {normal} ponto_vrg = ';';
+    	{normal} virgula = ',';
 	{normal} branco = (' ' | lf | tab | cr)+;
 	{normal} comentario_ln = '//' character nl;
-	{comment} star = '*';
-	{comment} slash = '/';
 	
 	{normal->comment, comment}
           inicio_comentario_aninhado = '/*';
-          {comment} texto_comentario = [character -['*' + '/']]*;
+          
           {comment} fim_comentario_aninhado = '*'+ '/';
+          {comment} texto_comentario = [character -['*' + '/']]*;
+          {comment} star = '*';
+          {comment} slash = '/';
 	
 Ignored Tokens
  	branco, comentario_ln, inicio_comentario_aninhado, fim_comentario_aninhado, texto_comentario;
