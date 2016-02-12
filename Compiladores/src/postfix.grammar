@@ -3,11 +3,12 @@ Package simpleAdder;
 Helpers   
    	dig = ['0'..'9'];
    	letra = [['a'..'z']+['A'..'Z']];
-   	character = [0..0xffff];
+   	character = [0 .. 0xffff];
    	nl = '\n';
    	lf = 10; 
    	tab = 9; 
    	cr = 13;
+   	inicio_comentario = '/*';
    	charc_sem_ast = [character - '*']*;
    	charc_sem_ast_barra = [character - ['*' + '/']];
 	
@@ -36,20 +37,21 @@ Tokens
  	{normal} atr = '=';
  	{normal} par_es = '(';
  	{normal} par_dir = ')';
- 	{normal} chaves_dir = '{';
- 	{normal} chaves_esq = '}';
-        {normal} ponto_vrg = ';';
-    	{normal} virgula = ',';
+ 	{normal} chaves_esq = '{';
+ 	{normal} chaves_dir = '}';
+    {normal} ponto_vrg = ';';
+    {normal} virgula = ',';
 	{normal} branco = (' ' | lf | tab | cr)+;
-	{normal} comentario_ln = '//' character nl;
+	{normal} comentario_ln = '//' [character - [10 + 13]]*;
 	
 	{normal->comment, comment}
-          inicio_comentario_aninhado = '/*';
+          inicio_comentario_aninhado = inicio_comentario;
           
-          {comment} fim_comentario_aninhado = '*'+ '/';
-          {comment} texto_comentario = [character -['*' + '/']]*;
           {comment} star = '*';
           {comment} slash = '/';
+          {comment} fim_comentario_aninhado = '*/';
+          {comment} texto_comentario = [character -['*' + '/']]*;
+          
 	
 Ignored Tokens
  	branco, comentario_ln, inicio_comentario_aninhado, fim_comentario_aninhado, texto_comentario;
