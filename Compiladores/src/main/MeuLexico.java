@@ -9,8 +9,8 @@ import simpleAdder.lexer.Lexer.State;
 public class MeuLexico extends Lexer{
 	
 private int count;
-  private TInicioComentarioAninhado comment;
-  private StringBuffer text;
+  private TInicioComentarioAninhado inicioComentario;
+  private StringBuffer textoDoComentario;
   
   public MeuLexico(java.io.PushbackReader in)
   { super(in);
@@ -19,17 +19,17 @@ private int count;
   { 
     if(state.equals(State.COMMENT))
     { 
-      if(comment == null)
+      if(inicioComentario == null)
       { 
         
-        comment = (TInicioComentarioAninhado) token;
-        text = new StringBuffer(comment.getText());
+        inicioComentario = (TInicioComentarioAninhado) token;
+        textoDoComentario = new StringBuffer(inicioComentario.getText());
         count = 1;
         token = null; 
       }
       else
       { 
-        text.append(token.getText()); 
+        textoDoComentario.append(token.getText()); 
         if(token instanceof TInicioComentarioAninhado)
           count++;
         else if(token instanceof TFimComentarioAninhado)
@@ -37,10 +37,10 @@ private int count;
         if(count != 0)
           token = null; 
         else
-        { comment.setText(text.toString());
-          token = comment; 
+        { inicioComentario.setText(textoDoComentario.toString());
+          token = inicioComentario; 
           state = State.NORMAL; 
-          comment = null; 
+          inicioComentario = null; 
         }
       }
     }
