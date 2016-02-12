@@ -7,14 +7,14 @@ import simpleAdder.analysis.*;
 @SuppressWarnings("nls")
 public final class TFimComentarioAninhado extends Token
 {
-    public TFimComentarioAninhado(String text)
+    public TFimComentarioAninhado()
     {
-        setText(text);
+        super.setText("*/");
     }
 
-    public TFimComentarioAninhado(String text, int line, int pos)
+    public TFimComentarioAninhado(int line, int pos)
     {
-        setText(text);
+        super.setText("*/");
         setLine(line);
         setPos(pos);
     }
@@ -22,12 +22,18 @@ public final class TFimComentarioAninhado extends Token
     @Override
     public Object clone()
     {
-      return new TFimComentarioAninhado(getText(), getLine(), getPos());
+      return new TFimComentarioAninhado(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTFimComentarioAninhado(this);
+    }
+
+    @Override
+    public void setText(@SuppressWarnings("unused") String text)
+    {
+        throw new RuntimeException("Cannot change TFimComentarioAninhado text.");
     }
 }

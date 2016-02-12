@@ -9,12 +9,12 @@ public final class TChavesEsq extends Token
 {
     public TChavesEsq()
     {
-        super.setText("}");
+        super.setText("{");
     }
 
     public TChavesEsq(int line, int pos)
     {
-        super.setText("}");
+        super.setText("{");
         setLine(line);
         setPos(pos);
     }

@@ -9,12 +9,12 @@ public final class TChavesDir extends Token
 {
     public TChavesDir()
     {
-        super.setText("{");
+        super.setText("}");
     }
 
     public TChavesDir(int line, int pos)
     {
-        super.setText("{");
+        super.setText("}");
         setLine(line);
         setPos(pos);
     }

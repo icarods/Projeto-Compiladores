@@ -32,14 +32,17 @@ public interface Analysis extends Switch
     void caseTAtr(TAtr node);
     void caseTParEs(TParEs node);
     void caseTParDir(TParDir node);
-    void caseTChavesDir(TChavesDir node);
     void caseTChavesEsq(TChavesEsq node);
+    void caseTChavesDir(TChavesDir node);
     void caseTPontoVrg(TPontoVrg node);
+    void caseTVirgula(TVirgula node);
     void caseTBranco(TBranco node);
     void caseTComentarioLn(TComentarioLn node);
     void caseTInicioComentarioAninhado(TInicioComentarioAninhado node);
-    void caseTTextoComentario(TTextoComentario node);
+    void caseTStar(TStar node);
+    void caseTSlash(TSlash node);
     void caseTFimComentarioAninhado(TFimComentarioAninhado node);
+    void caseTTextoComentario(TTextoComentario node);
     void caseEOF(EOF node);
     void caseInvalidToken(InvalidToken node);
 }

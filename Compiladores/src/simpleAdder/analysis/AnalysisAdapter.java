@@ -195,19 +195,25 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTChavesDir(TChavesDir node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseTChavesEsq(TChavesEsq node)
     {
         defaultCase(node);
     }
 
     @Override
+    public void caseTChavesDir(TChavesDir node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTPontoVrg(TPontoVrg node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTVirgula(TVirgula node)
     {
         defaultCase(node);
     }
@@ -231,13 +237,25 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTTextoComentario(TTextoComentario node)
+    public void caseTStar(TStar node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTSlash(TSlash node)
     {
         defaultCase(node);
     }
 
     @Override
     public void caseTFimComentarioAninhado(TFimComentarioAninhado node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTTextoComentario(TTextoComentario node)
     {
         defaultCase(node);
     }
